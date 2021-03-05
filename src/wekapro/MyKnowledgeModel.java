@@ -15,6 +15,8 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.NominalToBinary;
 import weka.filters.unsupervised.attribute.NumericToNominal;
 import weka.filters.unsupervised.attribute.Remove;
+import weka.filters.unsupervised.instance.RemovePercentage;
+import weka.filters.unsupervised.instance.Resample;
 
 /**
  *
@@ -25,6 +27,8 @@ public class MyKnowledgeModel {
     Instances dataset;
     String[] model_options;
     String[] data_options;
+    Instances trainset;
+    Instances testset;
     
 
     public MyKnowledgeModel() {
@@ -35,8 +39,13 @@ public class MyKnowledgeModel {
                             String d_opts) throws Exception {
         this.source = new DataSource(filename);
         this.dataset = source.getDataSet();
-        this.model_options = weka.core.Utils.splitOptions(m_opts);
-        this.data_options = weka.core.Utils.splitOptions(d_opts);
+        if (m_opts != null){
+            this.model_options = weka.core.Utils.splitOptions(m_opts);
+        }
+        if (d_opts != null){
+            this.data_options = weka.core.Utils.splitOptions(d_opts);
+        }
+        
     }
     
     public Instances removeData(Instances originalData) throws Exception{
@@ -76,6 +85,26 @@ public class MyKnowledgeModel {
         outData.writeBatch();
         System.out.println("Converted");
     } 
+    
+    public Instances divideTrainTest(Instances originalSet,
+            double percent, boolean isTest) throws Exception{
+        RemovePercentage rp = new RemovePercentage();
+        rp.setPercentage(percent);
+        rp.setInvertSelection(isTest);
+        rp.setInputFormat(originalSet);
+        return Filter.useFilter(originalSet, rp);
+        
+    }
+    
+    public Instances divideTrainTestR(Instances originalSet,
+            double percent,boolean isTest) throws Exception{
+        Resample rs = new Resample();
+        rs.setNoReplacement(true);
+        rs.setSampleSizePercent(percent);
+        rs.setInvertSelection(isTest);
+        rs.setInputFormat(originalSet);
+        return Filter.useFilter(originalSet, rs);
+    }
 
     @Override
     public String toString() {
