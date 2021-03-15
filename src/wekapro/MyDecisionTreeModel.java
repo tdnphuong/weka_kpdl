@@ -9,6 +9,7 @@ import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 import weka.core.Debug;
 import weka.core.Debug.Random;
+import weka.core.Instances;
 
 /**
  *
@@ -41,6 +42,18 @@ public class MyDecisionTreeModel extends MyKnowledgeModel {
         eval.crossValidateModel(tree, this.testset, folds, rnd);
         System.out.println(eval.toSummaryString(
                 "\nKet qua danh gia mo hinh 10-fold cross-validation\n-----\n", false));
+    }
+    
+    public void predictClassLabel(Instances input) throws Exception{
+        for( int i = 0; i < input.numInstances(); i++){
+            double predict = tree.classifyInstance(input.instance(i));
+            double actual = input.instance(i).classValue();
+            System.out.println("Instance " + i + ": predict = " +
+                                input.classAttribute().value((int)predict) +
+                                "; actual = " +
+                                input.classAttribute().value((int)actual));
+//            input.instance(i).setClassValue(predict);
+        }
     }
     
     @Override
