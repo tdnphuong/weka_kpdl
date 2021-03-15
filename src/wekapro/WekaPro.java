@@ -34,14 +34,20 @@ public class WekaPro {
 //                "-N -R first-last");
 //        model.mineAssociationRules();
 //        System.out.println(model);
-        MyKnowledgeModel model = new MyKnowledgeModel(
-                "C:\\Program Files\\Weka-3-8-5\\data\\iris.arff", null, null);
-        model.trainset = model.divideTrainTestR(model.dataset, 80, false);
-        model.testset = model.divideTrainTestR(model.dataset, 80, true);
-        System.out.println(model);
-        System.out.println(model.trainset.toSummaryString());
-        System.out.println(model.testset.toSummaryString());
+//        MyKnowledgeModel model = new MyKnowledgeModel(
+//                "C:\\Program Files\\Weka-3-8-5\\data\\iris.arff", null, null);
+//        model.trainset = model.divideTrainTestR(model.dataset, 80, false);
+//        model.testset = model.divideTrainTestR(model.dataset, 80, true);
+//        System.out.println(model);
+//        System.out.println(model.trainset.toSummaryString());
+//        System.out.println(model.testset.toSummaryString());
         
+        MyDecisionTreeModel model = new MyDecisionTreeModel(
+                "C:\\Program Files\\Weka-3-8-5\\data\\iris.arff",
+                "-C 0.25 -M 2", null);
+        model.buildDecisionTree();
+        model.evaluateDecisionTree();
+        System.out.println(model);
     }
     
 }
