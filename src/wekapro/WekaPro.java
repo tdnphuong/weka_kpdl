@@ -45,15 +45,23 @@ public class WekaPro {
 //        System.out.println(model.trainset.toSummaryString());
 //        System.out.println(model.testset.toSummaryString());
         // Cay quyet dinh
-        MyDecisionTreeModel model = new MyDecisionTreeModel(
-                "C:\\Program Files\\Weka-3-8-5\\data\\iris.arff",
-                "-C 0.25 -M 2", null);
-        model.buildDecisionTree();
-        model.evaluateDecisionTree();
+//        MyDecisionTreeModel model = new MyDecisionTreeModel(
+//                "C:\\Program Files\\Weka-3-8-5\\data\\iris.arff",
+//                "-C 0.25 -M 2", null);
+//        model.buildDecisionTree();
+//        model.evaluateDecisionTree();
+//        System.out.println(model);
+//        //Tao file decisiontree
+////        model.saveModel("D:\\STUDY\\KHAIPHA_DL\\Bai7WK\\decisiontree.model", model.tree);
+//        model.tree = (J48)model.loadModel("D:\\STUDY\\KHAIPHA_DL\\Bai7WK\\decisiontree.model");
+//        model.predictClassLabel(model.testset);
+        
+        MyNaiveBayesModel model = new MyNaiveBayesModel();
+        model.buildNaiveBayes("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_train.arff");
+        model.evaluateNaivebayes("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_test.arff");
+        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_unlabel.arff",
+                                    "D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris-predict-nb.arff");
         System.out.println(model);
-//        model.saveModel("D:\\STUDY\\KHAIPHA_DL\\Bai7WK\\decisiontree.model", model.tree);
-        model.tree = (J48)model.loadModel("D:\\STUDY\\KHAIPHA_DL\\Bai7WK\\decisiontree.model");
-        model.predictClassLabel(model.testset);
     }
     
 }
