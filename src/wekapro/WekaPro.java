@@ -55,12 +55,23 @@ public class WekaPro {
 ////        model.saveModel("D:\\STUDY\\KHAIPHA_DL\\Bai7WK\\decisiontree.model", model.tree);
 //        model.tree = (J48)model.loadModel("D:\\STUDY\\KHAIPHA_DL\\Bai7WK\\decisiontree.model");
 //        model.predictClassLabel(model.testset);
-        
-        MyNaiveBayesModel model = new MyNaiveBayesModel();
-        model.buildNaiveBayes("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_train.arff");
-        model.evaluateNaivebayes("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_test.arff");
-        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_unlabel.arff",
-                                    "D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris-predict-nb.arff");
+
+        // Mo hinh Naive Bayes
+//        MyNaiveBayesModel model = new MyNaiveBayesModel();
+//        model.buildNaiveBayes("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_train.arff");
+//        model.evaluateNaivebayes("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_test.arff");
+//        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_unlabel.arff",
+//                                    "D:\\STUDY\\KHAIPHA_DL\\Naive Bayes\\iris_predict_nb.arff");
+//        System.out.println(model);
+
+        // Mo hinh Mang no ron
+        MyNeuralNetworkModel model = new MyNeuralNetworkModel("",
+                                "-L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a -R",
+                                null);
+        model.buildNeuralNetwork("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_train.arff");
+        model.evaluateNeuralNetwork("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_test.arff");
+        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_unlabel.arff",
+                                    "D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_predict_ann.arff");
         System.out.println(model);
     }
     
