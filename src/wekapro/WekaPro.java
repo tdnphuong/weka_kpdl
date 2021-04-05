@@ -65,14 +65,22 @@ public class WekaPro {
 //        System.out.println(model);
 
         // Mo hinh Mang no ron
-        MyNeuralNetworkModel model = new MyNeuralNetworkModel("",
-                                "-L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a -R",
-                                null);
-        model.buildNeuralNetwork("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_train.arff");
-        model.evaluateNeuralNetwork("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_test.arff");
-        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_unlabel.arff",
-                                    "D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_predict_ann.arff");
-        System.out.println(model);
+//        MyNeuralNetworkModel model = new MyNeuralNetworkModel("",
+//                                "-L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a -R",
+//                                null);
+//        model.buildNeuralNetwork("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_train.arff");
+//        model.evaluateNeuralNetwork("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_test.arff");
+//        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_unlabel.arff",
+//                                    "D:\\STUDY\\KHAIPHA_DL\\NeuralNetwork\\iris_predict_ann.arff");
+//        System.out.println(model);
+
+        MySVMModel model = new MySVMModel("",
+            "-C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K \"weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007\" -calibrator \"weka.classifiers.functions.Logistic -R 1.0E-8 -M -1 -num-decimal-places 4\"", null);
+        model.buildSVM("D:\\STUDY\\KHAIPHA_DL\\SVM\\iris_train.arff");
+        model.evaluateSVM("D:\\STUDY\\KHAIPHA_DL\\SVM\\iris_test.arff");
+        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\SVM\\iris_unlabel.arff",
+                "D:\\STUDY\\KHAIPHA_DL\\SVM\\iris_predict_svm.arff");
+        System.out.println(model); 
     }
     
 }
