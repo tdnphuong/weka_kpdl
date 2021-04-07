@@ -6,6 +6,8 @@
 package wekapro;
 
 import weka.classifiers.trees.J48;
+import wekapro.ensembles.MyBaggingModel;
+
 
 /**
  *
@@ -85,13 +87,20 @@ public class WekaPro {
         
        
         // Mo hinh KNN
-        MyKNNModel model = new MyKNNModel("",
-            "-K 3 -W 0 -A \"weka.core.neighboursearch.LinearNNSearch -A \\\"weka.core.EuclideanDistance -R first-last\\\"\"", null);
-        model.buildKNN("D:\\STUDY\\KHAIPHA_DL\\kLC\\iris_train.arff");
-        model.evaluateKNN("D:\\STUDY\\KHAIPHA_DL\\kLC\\iris_test.arff");
-        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\kLC\\iris_unlabel.arff",
-                "D:\\STUDY\\KHAIPHA_DL\\kLC\\iris_predict.arff");
-        System.out.println(model);
-    }
+//        MyKNNModel model = new MyKNNModel("",
+//            "-K 3 -W 0 -A \"weka.core.neighboursearch.LinearNNSearch -A \\\"weka.core.EuclideanDistance -R first-last\\\"\"", null);
+//        model.buildKNN("D:\\STUDY\\KHAIPHA_DL\\kLC\\iris_train.arff");
+//        model.evaluateKNN("D:\\STUDY\\KHAIPHA_DL\\kLC\\iris_test.arff");
+//        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\kLC\\iris_unlabel.arff",
+//                "D:\\STUDY\\KHAIPHA_DL\\kLC\\iris_predict.arff");
+//        System.out.println(model);
     
+        // Phuong phap Bagging
+        MyBaggingModel model = new MyBaggingModel("", null, null);
+        model.buildMyBaggingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
+        model.evaluateBaggingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
+        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_unlabel.arff", 
+               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_bag.arff");
+        System.out.println("Finished");
+    }
 }

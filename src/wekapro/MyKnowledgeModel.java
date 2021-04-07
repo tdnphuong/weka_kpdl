@@ -23,12 +23,12 @@ import weka.filters.unsupervised.instance.Resample;
  * @author LENOVO
  */
 public class MyKnowledgeModel {
-    DataSource source;
-    Instances dataset;
-    String[] model_options;
-    String[] data_options;
-    Instances trainset;
-    Instances testset;
+    protected DataSource source;
+    protected Instances dataset;
+    protected String[] model_options;
+    protected String[] data_options;
+    protected Instances trainset;
+    protected Instances testset;
     
 
     public MyKnowledgeModel() {
