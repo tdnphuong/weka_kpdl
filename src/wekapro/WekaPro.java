@@ -7,6 +7,7 @@ package wekapro;
 
 import weka.classifiers.trees.J48;
 import wekapro.ensembles.MyBaggingModel;
+import wekapro.ensembles.MyBoostingModel;
 
 
 /**
@@ -96,11 +97,19 @@ public class WekaPro {
 //        System.out.println(model);
     
         // Phuong phap Bagging
-        MyBaggingModel model = new MyBaggingModel("", null, null);
-        model.buildMyBaggingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
-        model.evaluateBaggingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
+//        MyBaggingModel model = new MyBaggingModel("", null, null);
+//        model.buildMyBaggingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
+//        model.evaluateBaggingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
+//        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_unlabel.arff", 
+//               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_bag.arff");
+//        System.out.println("Finished");
+        
+        // Phuong phap Boosting
+        MyBoostingModel model = new MyBoostingModel("", null, null);
+        model.buildBoostingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
+        model.evaluateBoostingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
         model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_unlabel.arff", 
-               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_bag.arff");
+               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_boost.arff");
         System.out.println("Finished");
     }
 }
