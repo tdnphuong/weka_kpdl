@@ -7,6 +7,7 @@ package wekapro;
 
 import weka.classifiers.trees.J48;
 import wekapro.ensembles.MyBaggingModel;
+import wekapro.ensembles.MyBlendingModel;
 import wekapro.ensembles.MyBoostingModel;
 import wekapro.ensembles.MyVotingModel;
 
@@ -114,11 +115,19 @@ public class WekaPro {
 //        System.out.println("Finished");
         
         // Phuong phap Voting
-        MyVotingModel model = new MyVotingModel("", null, null);
-        model.buildVotingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
-        model.evaluateVotingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
+//        MyVotingModel model = new MyVotingModel("", null, null);
+//        model.buildVotingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
+//        model.evaluateVotingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
+//        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_unlabel.arff", 
+//               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_vote.arff");
+//        System.out.println("Finished");
+        
+        // Phuong phap Blending
+        MyBlendingModel model = new MyBlendingModel("", null, null);
+        model.buildBlendingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
+        model.evaluateBlendingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
         model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_unlabel.arff", 
-               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_vote.arff");
+               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_blend.arff");
         System.out.println("Finished");
     }
 }
