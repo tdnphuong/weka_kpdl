@@ -6,6 +6,7 @@
 package wekapro;
 
 import weka.classifiers.trees.J48;
+import wekapro.cluster.MyEMModel;
 import wekapro.cluster.MyKMeansModel;
 import wekapro.ensembles.MyBaggingModel;
 import wekapro.ensembles.MyBlendingModel;
@@ -132,8 +133,14 @@ public class WekaPro {
 //        System.out.println("Finished");
 
         // Phan Cum KMeans
-        MyKMeansModel model = new MyKMeansModel("", null, null);
-        model.buildKMeansModel("D:\\STUDY\\KHAIPHA_DL\\PhanCum\\iris_cluster_train.arff");
+//        MyKMeansModel model = new MyKMeansModel("", null, null);
+//        model.buildKMeansModel("D:\\STUDY\\KHAIPHA_DL\\PhanCum\\iris_cluster_train.arff");
+//        model.predictCluster("D:\\STUDY\\KHAIPHA_DL\\PhanCum\\iris_cluster_unlabel.arff");
+//        System.out.println("Finished");
+
+        // Phan Cum EM
+        MyEMModel model = new MyEMModel("", null, null);
+        model.buildEMModel("D:\\STUDY\\KHAIPHA_DL\\PhanCum\\iris_cluster_train.arff");
         model.predictCluster("D:\\STUDY\\KHAIPHA_DL\\PhanCum\\iris_cluster_unlabel.arff");
         System.out.println("Finished");
     }
