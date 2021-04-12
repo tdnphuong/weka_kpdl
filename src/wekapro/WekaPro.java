@@ -6,6 +6,7 @@
 package wekapro;
 
 import weka.classifiers.trees.J48;
+import wekapro.cluster.MyKMeansModel;
 import wekapro.ensembles.MyBaggingModel;
 import wekapro.ensembles.MyBlendingModel;
 import wekapro.ensembles.MyBoostingModel;
@@ -123,11 +124,17 @@ public class WekaPro {
 //        System.out.println("Finished");
         
         // Phuong phap Blending
-        MyBlendingModel model = new MyBlendingModel("", null, null);
-        model.buildBlendingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
-        model.evaluateBlendingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
-        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_unlabel.arff", 
-               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_blend.arff");
+//        MyBlendingModel model = new MyBlendingModel("", null, null);
+//        model.buildBlendingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_train.arff");
+//        model.evaluateBlendingModel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_test.arff");
+//        model.predictClassLabel("D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_unlabel.arff", 
+//               "D:\\STUDY\\KHAIPHA_DL\\IRIS\\iris_predict_blend.arff");
+//        System.out.println("Finished");
+
+        // Phan Cum KMeans
+        MyKMeansModel model = new MyKMeansModel("", null, null);
+        model.buildKMeansModel("D:\\STUDY\\KHAIPHA_DL\\PhanCum\\iris_cluster_train.arff");
+        model.predictCluster("D:\\STUDY\\KHAIPHA_DL\\PhanCum\\iris_cluster_unlabel.arff");
         System.out.println("Finished");
     }
 }
